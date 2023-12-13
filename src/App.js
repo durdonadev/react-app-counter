@@ -16,40 +16,35 @@ const Button1 = (props) => {
 };
 
 class App extends React.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         counter: 0,
-    //         counterBy2: 0
-    //     };
-    // }
+    constructor() {
+        super();
+        this.state = {
+            counter: 0
+        };
+    }
 
-    state = {
-        counter: 0,
-        counterBy2: 0
+    // state = {
+    //     counter: 0
+    // };
+
+    increment = () => {
+        this.setState((prevState) => ({
+            counter: prevState.counter + 1
+        }));
     };
 
-    handleCounter = (e) => {
-        this.setState({
-            counter: this.state.counter + 1
-        });
-    };
-
-    handleCounterBy2 = (e) => {
-        this.setState({
-            counterBy2: this.state.counterBy2 + 2
-        });
+    decrement = () => {
+        this.setState((prevState) => ({
+            counter: prevState.counter - 1
+        }));
     };
 
     render() {
         return (
-            <div>
-                <Button onClick={this.handleCounter}>
-                    Click Me {this.state.counter}
-                </Button>
-                <Button onClick={this.handleCounterBy2}>
-                    Click Me {this.state.counterBy2}
-                </Button>
+            <div className="container">
+                <Button onClick={this.decrement}>-</Button>
+                <span>Counter: {this.state.counter}</span>
+                <Button onClick={this.increment}>+</Button>
             </div>
         );
     }
